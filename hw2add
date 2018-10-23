@@ -1,0 +1,30 @@
+clear;
+close;
+clc;
+%扩展题
+fid1=fopen('hw2.m');
+Z=textscan(fid1,'%s','delimiter','\n');%Use newline as a delimiter
+num=length(Z{1});  %Total number of rows
+z=Z{1};
+fclose(fid1);
+str='';%Empty as a string comparison object
+k=0;
+for j=1:n
+    if strcmp(z{j,1},str)  %String comparison function returns 1 if equal
+        k=k+1;    %k is the number of blank lines
+    end
+end
+h=n-k;      %Total lines - empty lines = lines of code
+%Count the number of annotation lines
+fid2=fopen('hw2.m');
+E=textscan(fid2,'%s','delimiter','%');%Use percent as a delimiter
+E{1}
+annonum=length(E{1});  
+fclose(fid2);
+
+disp('总行数')
+disp(num)
+disp('代码行数')
+disp(h)
+disp('注释行数')
+disp(annonum)
